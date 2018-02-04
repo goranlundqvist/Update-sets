@@ -1,8 +1,7 @@
 # Public Update set repository for use in ServiceNow
-Here I public all update sets containing the code I use in my blogs and videos for easier access for the viewers & readers.
+In this repository I public update sets with the configuration/code I use in my blogs and videos for easier access for the viewers & readers.
 
-I take no responsibility on the results of using these update sets and make sure that you always test them in a safe environment first. E.g. personal developer instance or your company dev instance.
-______________________________________________________________________________
+I take no responsibility on the results of using these update sets in your instances. Make sure that you always test them in a safe environment first. E.g. personal developer instance or your company dev instance.
 
 ## GlideAjax Example:
 
