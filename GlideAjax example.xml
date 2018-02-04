@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2018-02-04 22:55:15">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<application display_value="Global">global</application>
+<application_name>Global</application_name>
+<application_scope>global</application_scope>
+<application_version/>
+<collisions/>
+<commit_date/>
+<deleted/>
+<description/>
+<inserted/>
+<name>Blog - GlideAjax Example</name>
+<origin_sys_id/>
+<parent display_value=""/>
+<release_date/>
+<remote_base_update_set display_value=""/>
+<remote_parent_id/>
+<remote_sys_id>9c1904960f8893004cf365ba32050eee</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_class_name>sys_remote_update_set</sys_class_name>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2018-02-04 22:55:15</sys_created_on>
+<sys_id>930a8cda0f8893004cf365ba32050e38</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2018-02-04 22:55:15</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_include_04e1d5010ffb07004cf365ba32050e71</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.acmeClientScriptUtil&lt;/api_name&gt;&lt;client_callable&gt;true&lt;/client_callable&gt;&lt;description&gt;Used in client Scripts&lt;/description&gt;&lt;name&gt;acmeClientScriptUtil&lt;/name&gt;&lt;script&gt;&lt;![CDATA[var acmeClientScriptUtil = Class.create();
+acmeClientScriptUtil.prototype = Object.extendsObject(AbstractAjaxProcessor, {
+/**
+ * Gets the sys_id from the GlideAjax call and gets the support group.
+ *
+ * @param {string} sys_id - sys_id of the record that is sent through the GlideAjax call.
+ * @return {JSON} a object containing both the value and displayValue of the support group. 
+ */	
+	getSupportGrp: function() {
+	
+		var ci = this.getParameter('syspam_ci_sysid');
+		var returnGrp = {};
+		var getCI = new GlideRecord('cmdb_ci');
+		getCI.get(ci);
+		
+		if(getCI.support_group){
+			returnGrp.value = getCI.getValue('support_group');
+			returnGrp.displayValue = getCI.getDisplayValue('support_group');
+			
+			return JSON.stringify(returnGrp);
+		}
+		else
+			return;
+		
+		
+	},
+	
+	
+	checkTask: function() {
+		var incRec = this.getParameter('sysparm_inc_sysid');
+		var checkTask = new GlideRecord('incident_task');
+		checkTask.addActiveQuery();//Only want active incident tasks
+		checkTask.addQuery('parent', incRec);//Only want tasks connected to current incident
+		checkTask.setLimit(1);//Only need to find 1 to abort
+		checkTask.query();
+		if (checkTask.hasNext()){
+			return true;
+		}
+		else
+			return;
+	},
+
+	type: 'acmeClientScriptUtil'
+});]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2018-01-19 20:41:30&lt;/sys_created_on&gt;&lt;sys_id&gt;04e1d5010ffb07004cf365ba32050e71&lt;/sys_id&gt;&lt;sys_mod_count&gt;14&lt;/sys_mod_count&gt;&lt;sys_name&gt;acmeClientScriptUtil&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_04e1d5010ffb07004cf365ba32050e71&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2018-02-04 22:54:51&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-1476798577</payload_hash>
+<remote_update_set display_value="Blog - GlideAjax Example">930a8cda0f8893004cf365ba32050e38</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2018-02-04 22:55:15</sys_created_on>
+<sys_id>1b0a8cda0f8893004cf365ba32050e38</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1616307803e0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2018-02-04 22:55:15</sys_updated_on>
+<table/>
+<target_name>acmeClientScriptUtil</target_name>
+<type>Script Include</type>
+<update_domain>global</update_domain>
+<update_guid>6df98c1671c89300a9bcdf3daf221826</update_guid>
+<update_guid_history>6df98c1671c89300a9bcdf3daf221826:-1476798577,cf64577b73fb8b0074753e79d8f96208:-1095924228,a153db3b9ffb8b0065a441557d581051:-1913535125,1cf05fb782fb8b00fe427033e5c7a5f7:1766466587,bdefcb7743fb8b002c045b207e19ddf6:-2066459422,c1b0654981fb070058ea7adf210582f4:1331122743,d39d51c5f2fb070078b4dc1f51a3f078:-1008931718,4e8d994543fb07003f376eb187a8a694:-1520358462,52965d813afb07002263f8428f5e91dd:-636389916,322615c16bfb0700281933c25f592a4c:-1330387457,24f5954130fb0700be3928d03acdd726:279416462,5bc55d81affb070024cf984cd160e5ef:-907897202,4a731541fcfb07008341a259a6dfd919:-1750089073,64a2950179fb070062cf6395a985cc88:-1501366937,dc02d501b1fb070002ae7cf7b37b5f76:-135315633</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_client_49f11ff70ffb8b004cf365ba32050ec7</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script_client"&gt;&lt;sys_script_client action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;applies_extended&gt;false&lt;/applies_extended&gt;&lt;condition/&gt;&lt;description&gt;An example of GlideAjax to get the  support group of the CI and return it as a JSON with both the value and DisplayValue. Then it's uses that data to set the assignment group.&lt;/description&gt;&lt;field&gt;cmdb_ci&lt;/field&gt;&lt;global&gt;true&lt;/global&gt;&lt;messages/&gt;&lt;name&gt;Custom - GetSupportGroup&lt;/name&gt;&lt;order/&gt;&lt;script&gt;&lt;![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+   if (isLoading || newValue === '') {
+      return;
+   }
+
+	var ga = new GlideAjax('acmeClientScriptUtil');
+	ga.addParam('sysparm_name', 'getSupportGrp');
+	ga.addParam('syspam_ci_sysid', newValue);
+	
+	ga.getXML(assignGrp);
+	
+	function assignGrp(response){
+		var answer = JSON.parse(response.responseXML.documentElement.getAttribute("answer"));
+		if(answer){
+			g_form.setValue('assignment_group', answer.value, answer.displayValue);
+			
+		}
+		
+		
+	}
+	
+	
+	
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_client&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2018-01-28 19:06:34&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;49f11ff70ffb8b004cf365ba32050ec7&lt;/sys_id&gt;&lt;sys_mod_count&gt;5&lt;/sys_mod_count&gt;&lt;sys_name&gt;Custom - GetSupportGroup&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_client_49f11ff70ffb8b004cf365ba32050ec7&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2018-02-04 22:52:37&lt;/sys_updated_on&gt;&lt;table&gt;incident&lt;/table&gt;&lt;type&gt;onChange&lt;/type&gt;&lt;ui_type&gt;0&lt;/ui_type&gt;&lt;view/&gt;&lt;/sys_script_client&gt;&lt;/record_update&gt;</payload>
+<payload_hash>1101783601</payload_hash>
+<remote_update_set display_value="Blog - GlideAjax Example">930a8cda0f8893004cf365ba32050e38</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2018-02-04 22:55:15</sys_created_on>
+<sys_id>570a8cda0f8893004cf365ba32050e38</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>161630577100000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2018-02-04 22:55:15</sys_updated_on>
+<table>incident</table>
+<target_name>Custom - GetSupportGroup</target_name>
+<type>Client Script</type>
+<update_domain>global</update_domain>
+<update_guid>0979c816dcc89300ab4c6a1f29cba49c</update_guid>
+<update_guid_history>0979c816dcc89300ab4c6a1f29cba49c:1101783601,8294d77bdcfb8b00ed5fb6bc79141983:975138333,c8e3537b34fb8b00452b357a6233e6dd:2033137181,71b3db3b6afb8b00134fae143d6ac864:-338931251,4f73d73be5fb8b00a1bd6f0e68677ade:259626685,519293f7a3fb8b004eafe0c3300fc650:1358912339</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+</unload>
