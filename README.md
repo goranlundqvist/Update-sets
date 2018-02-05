@@ -4,7 +4,9 @@ In this repository I public update sets with the configuration/code I use in my 
 I take no responsibility on the results of using these update sets in your instances. Make sure that you always test them in a safe environment first. E.g. personal developer instance or your company dev instance.
 
 ## GlideAjax Example:
-Video: https://www.youtube.com/watch?v=p5F3lpXgkHk.
+Video: https://www.youtube.com/watch?v=p5F3lpXgkHk
+
+Update set: [download](https://raw.githubusercontent.com/goranlundqvist/Update-sets/master/GlideAjax%20example/GlideAjax%20example.xml)
 
 I go through how to use GlideAjax and the importance of setting both value and displayValue on a reference field.
 
