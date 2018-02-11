@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2018-02-11 20:03:16">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<application display_value="Global">global</application>
+<application_name>Global</application_name>
+<application_scope>global</application_scope>
+<application_version/>
+<collisions/>
+<commit_date/>
+<deleted/>
+<description/>
+<inserted/>
+<name>Blog - Extra stuff</name>
+<origin_sys_id/>
+<parent display_value=""/>
+<release_date/>
+<remote_base_update_set display_value=""/>
+<remote_parent_id/>
+<remote_sys_id>12724b1c0fd8d7004cf365ba32050ec8</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_class_name>sys_remote_update_set</sys_class_name>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2018-02-11 20:03:16</sys_created_on>
+<sys_id>50d56fd40f1cd7004cf365ba32050eec</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2018-02-11 20:03:16</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_include_ff56664a0fc493004cf365ba32050e87</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.findSysID&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;false&lt;/client_callable&gt;&lt;description&gt;Functionality to find which table a specific sys_id belongs to.&amp;#13;
+&lt;/description&gt;&lt;name&gt;findSysID&lt;/name&gt;&lt;script&gt;&lt;![CDATA[/**
+ * Searches the sys_id and returns string about the result.
+ *
+ * @param {string} sys_id - sys_id of the record that is to be found.
+ * @return {string} information about the result and an URL if an record is found
+ */
+function findSysID(sys_id){
+
+    var table_name = [];
+	var returnStr = 'Searching for sys_id: ' + sys_id +  ' and the result is:\n\n';
+    var table = new GlideRecord('sys_db_object');  
+    table.orderBy('name');  
+    table.query();  
+    while (table.next()) {  
+        if ((table.getValue('name') != '') &amp;&amp;  
+            (table.getValue('name').substring(0,2) != 'ts') &amp;&amp;  
+            (table.getValue('name').substring(0,2) != 'v_') &amp;&amp;  
+            (table.getValue('name').substring(0,3) != 'dis') &amp;&amp;
+			(table.getValue('name').substring(0,2) != 'pa') &amp;&amp;
+            (table.getValue('name').substring(0,3) != 'dsc') &amp;&amp;  
+            (table.getValue('name').substring(0,3) != 'ecc') &amp;&amp;  
+            (table.getValue('name').substring(0,3) != 'ha_') &amp;&amp;  
+            (table.getValue('name').substring(0,3) != 'wf_') &amp;&amp;  
+            (table.getValue('name').substring(0,3) != 'win') &amp;&amp;
+			(table.getValue('name').substring(0,8) != 'sys_roll') &amp;&amp;
+            (table.getValue('name').substring(0,4) != 'sysx'))  {  
+				
+			var object = new GlideRecord(table.name);  
+			if (object.get(sys_id)) {  
+				table_name.push(table.name.toString());  
+			}  
+		}  
+    }          
+    if (table_name) {  
+        return returnStr += 'Found ' + sys_id + ' in table(s): ' + table_name.join(', ') + '.\n Use nav_to.do?uri=' + table_name[0] + '.do?sys_id=' + sys_id;  
+    }  
+    else {  
+        return returnStr += 'Did not find sys_id ' + sys_id + '.';  
+    }
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2018-02-04 15:40:53&lt;/sys_created_on&gt;&lt;sys_id&gt;ff56664a0fc493004cf365ba32050e87&lt;/sys_id&gt;&lt;sys_mod_count&gt;13&lt;/sys_mod_count&gt;&lt;sys_name&gt;findSysID&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_ff56664a0fc493004cf365ba32050e87&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2018-02-11 17:50:49&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+<payload_hash>1751834160</payload_hash>
+<remote_update_set display_value="Blog - Extra stuff">50d56fd40f1cd7004cf365ba32050eec</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2018-02-11 20:03:16</sys_created_on>
+<sys_id>54d56fd40f1cd7004cf365ba32050eed</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>16185fdac0e0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2018-02-11 20:03:16</sys_updated_on>
+<table/>
+<target_name>findSysID</target_name>
+<type>Script Include</type>
+<update_domain>global</update_domain>
+<update_guid>54870710121cd7003bc1da61b17d813a</update_guid>
+<update_guid_history>54870710121cd7003bc1da61b17d813a:1751834160,f8ddaf06388893000332be9b39387e8b:-1197917545,01920f8afa089300aec951d168b09146:-136662380,97e0838af60893001e11fb37bba70aa3:2128045235,3c40838adf08930000fbb7e8ec10de3a:-623297549,ec4f7a4a84089300fb55cc62c2619656:2128045235,c972fe0245089300d3e499a87406f96c:-906905875,e5f1be02c7089300f92c40dae1bbf45e:-915147239,b320f64ecbc49300ee73e1eed13ecbb3:-989677561,845f6e0ed5c49300dcc936bd25430c5b:-630496176,31cb6a4a9cc49300f19a21831111689f:-1436110344,ffbba24eacc49300f7e301c61a5bc1f0:-661348444,7fabaa0ee7c4930023be7fdbaba3e825:633916589,cbaaae4aafc4930030b60a24a854ff52:-1535976003,2da76e4acbc49300036a98ab7504c1ae:-1636458225,a0a6a202a8c49300f1e95e762e36b611:1848920636</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_include_48c2871c0fd8d7004cf365ba32050e3e</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.getDuplicates&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;true&lt;/client_callable&gt;&lt;description&gt;Functionality where you specify a table and a column. it then returns an array of all values that appear more than x amount of times.&lt;/description&gt;&lt;name&gt;getDuplicates&lt;/name&gt;&lt;script&gt;&lt;![CDATA[/**
+ * Searches the table and value and returns array of which values appear more than @amount of times.
+ *
+ * @param {string} tablename - Which table to conduct the search in.
+ * @param {string} val - Which column(field) to search within the table.
+ * @param {int} amount - The number of how times a value should max appears before being put on the list 
+ * @return {array} array of which values appear more than @amount of times.
+ */
+function getDuplicates(tablename,val, amount) {
+	var dupRecords = [];
+	var gaDupCheck = new GlideAggregate(tablename);
+	gaDupCheck.addQuery('active','true');
+	gaDupCheck.addAggregate('COUNT',val);
+	gaDupCheck.addNotNullQuery(val);
+	gaDupCheck.groupBy(val);
+	gaDupCheck.addHaving('COUNT', '&gt;', amount);
+	gaDupCheck.query();
+	while (gaDupCheck.next()) {
+		dupRecords.push(gaDupCheck[val].toString());
+	}
+	return dupRecords;
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2018-02-11 17:30:03&lt;/sys_created_on&gt;&lt;sys_id&gt;48c2871c0fd8d7004cf365ba32050e3e&lt;/sys_id&gt;&lt;sys_mod_count&gt;4&lt;/sys_mod_count&gt;&lt;sys_name&gt;getDuplicates&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_48c2871c0fd8d7004cf365ba32050e3e&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2018-02-11 17:37:24&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+<payload_hash>1755377719</payload_hash>
+<remote_update_set display_value="Blog - Extra stuff">50d56fd40f1cd7004cf365ba32050eec</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2018-02-11 20:03:16</sys_created_on>
+<sys_id>90d56fd40f1cd7004cf365ba32050eed</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>16185f1622f0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2018-02-11 20:03:16</sys_updated_on>
+<table/>
+<target_name>getDuplicates</target_name>
+<type>Script Include</type>
+<update_domain>global</update_domain>
+<update_guid>af648f5cc1d8d7005925445ed1ab7462</update_guid>
+<update_guid_history>af648f5cc1d8d7005925445ed1ab7462:1755377719,e1540b5cacd8d700590817b48cae16d4:-584721138,37340f1c12d8d700f17f16f5602f6726:-1772493219,fed3c31cc0d8d700517a38e198a0d7e1:-1015759032,8cc2871c6ad8d7009ae03c007f51ef40:-856986553</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>syntax_editor_macro_75490b500f1cd7004cf365ba32050ef6</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="syntax_editor_macro"><syntax_editor_macro action="INSERT_OR_UPDATE"><comments>GlideAjax with JSON return.</comments><name>vargajson</name><sys_class_name>syntax_editor_macro</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2018-02-11 17:59:36</sys_created_on><sys_id>75490b500f1cd7004cf365ba32050ef6</sys_id><sys_mod_count>1</sys_mod_count><sys_name>vargajson</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>syntax_editor_macro_75490b500f1cd7004cf365ba32050ef6</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2018-02-11 20:00:54</sys_updated_on><text>var ga = new GlideAjax('$0');&#13;
+	ga.addParam('sysparm_name', '');&#13;
+	&#13;
+	ga.getXML(handleResponse);&#13;
+	&#13;
+	function handleResponse(response){&#13;
+		var answer = JSON.parse(response.responseXML.documentElement.getAttribute("answer"));&#13;
+		if(answer){&#13;
+&#13;
+		}&#13;
+		&#13;
+	}</text></syntax_editor_macro></record_update>]]></payload>
+<payload_hash>1250613224</payload_hash>
+<remote_update_set display_value="Blog - Extra stuff">50d56fd40f1cd7004cf365ba32050eec</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2018-02-11 20:03:16</sys_created_on>
+<sys_id>94d56fd40f1cd7004cf365ba32050eec</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1618674c3140000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2018-02-11 20:03:16</sys_updated_on>
+<table/>
+<target_name>vargajson</target_name>
+<type>Editor Macro</type>
+<update_domain>global</update_domain>
+<update_guid>f545af90d75cd70015ba838247512d2a</update_guid>
+<update_guid_history>f545af90d75cd70015ba838247512d2a:1250613224,49894710b41cd700166a97abdf9badec:-823730522</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_include_2f554b9c0fd8d7004cf365ba32050e51</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.acmeUsefulUtils&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;true&lt;/client_callable&gt;&lt;description&gt;Collection of usefully utilites that might be used within the plattform.&lt;/description&gt;&lt;name&gt;acmeUsefulUtils&lt;/name&gt;&lt;script&gt;&lt;![CDATA[var acmeUsefulUtils = Class.create();
+acmeUsefulUtils.prototype = Object.extendsObject(AbstractAjaxProcessor, {
+	/**
+ * Searches the table and value and returns array of which values appear more than @amount of times.
+ *
+ * @param {string} tablename - Which table to conduct the search in.
+ * @param {string} val - Which column(field) to search within the table.
+ * @param {int} amount - The number of how times a value should max appears before being put on the list 
+ * @return {array} array of which values appear more than @amount of times.
+ */
+	getDuplicates: function (tablename,val, amount) {
+		var dupRecords = [];
+		var gaDupCheck = new GlideAggregate(tablename);
+		gaDupCheck.addQuery('active','true');
+		gaDupCheck.addAggregate('COUNT',val);
+		gaDupCheck.addNotNullQuery(val);
+		gaDupCheck.groupBy(val);
+		gaDupCheck.addHaving('COUNT', '&gt;', amount);
+		gaDupCheck.query();
+		
+		while (gaDupCheck.next()) {
+			dupRecords.push(gaDupCheck[val].toString());
+		}
+		return dupRecords;
+	},
+	/**
+ * Searches the sys_id and returns string about the result.
+ *
+ * @param {string} sys_id - sys_id of the record that is to be found.
+ * @return {string} information about the result and an URL if an record is found
+ */
+	findSysID: function(sys_id){
+
+		var table_name = [];
+		var returnStr = 'Searching for sys_id: ' + sys_id +  ' and the result is:\n\n';
+		var table = new GlideRecordSecure('sys_db_object');  
+		table.orderBy('name');  
+		table.query();  
+		while (table.next()) {  
+			if ((table.getValue('name') != '') &amp;&amp;  
+				(table.getValue('name').substring(0,2) != 'ts') &amp;&amp;  
+				(table.getValue('name').substring(0,2) != 'v_') &amp;&amp;  
+				(table.getValue('name').substring(0,3) != 'dis') &amp;&amp;
+				(table.getValue('name').substring(0,2) != 'pa') &amp;&amp;
+				(table.getValue('name').substring(0,3) != 'dsc') &amp;&amp;  
+				(table.getValue('name').substring(0,3) != 'ecc') &amp;&amp;  
+				(table.getValue('name').substring(0,3) != 'ha_') &amp;&amp;  
+				(table.getValue('name').substring(0,3) != 'wf_') &amp;&amp;  
+				(table.getValue('name').substring(0,3) != 'win') &amp;&amp;
+				(table.getValue('name').substring(0,8) != 'sys_roll') &amp;&amp;
+				(table.getValue('name').substring(0,4) != 'sysx'))  {  
+
+				var object = new GlideRecord(table.name);  
+				if (object.get(sys_id)) {  
+					table_name.push(table.name.toString());  
+				}  
+			}  
+		}          
+		if (table_name) {  
+			return returnStr += 'Found ' + sys_id + ' in table(s): ' + table_name.join(', ') + '.\n Use nav_to.do?uri=' + table_name[0] + '.do?sys_id=' + sys_id;  
+		}  
+		else {  
+			return returnStr += 'Did not find sys_id ' + sys_id + '.';  
+		}
+	},
+
+
+	type: 'acmeUsefulUtils'
+});]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2018-02-11 17:41:42&lt;/sys_created_on&gt;&lt;sys_id&gt;2f554b9c0fd8d7004cf365ba32050e51&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_name&gt;acmeUsefulUtils&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_2f554b9c0fd8d7004cf365ba32050e51&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2018-02-11 17:49:40&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-906961035</payload_hash>
+<remote_update_set display_value="Blog - Extra stuff">50d56fd40f1cd7004cf365ba32050eec</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2018-02-11 20:03:16</sys_created_on>
+<sys_id>dcd56fd40f1cd7004cf365ba32050eec</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>16185fc9e8d0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2018-02-11 20:03:16</sys_updated_on>
+<table/>
+<target_name>acmeUsefulUtils</target_name>
+<type>Script Include</type>
+<update_domain>global</update_domain>
+<update_guid>1337cb9c4ad8d70088a1eec796715163</update_guid>
+<update_guid_history>1337cb9c4ad8d70088a1eec796715163:-906961035,6c464b9cb9d8d70087b9b450f4e1ced4:-758590164,5895839cfcd8d700343a2ea6c9463c25:-528882000,2e654b9c1cd8d700aab35d82984138cc:656260205</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+</unload>
