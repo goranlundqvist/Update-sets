@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2018-03-14 19:07:59">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<application display_value="Global">global</application>
+<application_name>Global</application_name>
+<application_scope>global</application_scope>
+<application_version/>
+<collisions/>
+<commit_date/>
+<deleted/>
+<description/>
+<inserted/>
+<name>Blog - Responsive Widget</name>
+<origin_sys_id/>
+<parent display_value=""/>
+<release_date/>
+<remote_base_update_set display_value=""/>
+<remote_parent_id/>
+<remote_sys_id>073203d20f74df404cf365ba32050eae</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_class_name>sys_remote_update_set</sys_class_name>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2018-03-14 19:07:58</sys_created_on>
+<sys_id>6c7203d20f74df404cf365ba32050e20</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2018-03-14 19:07:58</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sp_widget_2d42f6d20ff0df404cf365ba32050ed0</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_widget"&gt;&lt;sp_widget action="INSERT_OR_UPDATE"&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function($scope, spUtil) {
+  var c = this;
+	
+	spUtil.recordWatch($scope, $scope.data.table, "sys_id=" + $scope.data.sys_id);
+	
+	c.uiAction = function(action) {
+		c.data.action = action;
+		c.server.update().then(function() {
+			c.data.action = undefined;
+		})
+	}
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css/&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id&gt;action&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link/&gt;&lt;name&gt;Action&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+ 
+	// Get table &amp; sys_id
+	data.table = input.table || $sp.getParameter("table");
+	data.sys_id = input.sys_id || $sp.getParameter("sys_id");
+ 
+	// Valid GlideRecord
+	gr = new GlideRecord(data.table);
+	if (!gr.isValid())
+		return;
+ 
+	// Valid sys_id
+	if (!gr.get(data.sys_id))
+		return;
+ data.state = gr.getValue('state');
+	
+	data.showResolve = (data.state != '6') ? true: false;
+	data.showReopen = (data.state == '6') ? true: false;
+	
+	if (input &amp;&amp; input.action) {
+		var action = input.action;
+ 
+		// If Incident table
+		if (data.table == 'incident') {
+			if (action == 'resolve') {
+				// Resolve Incident
+				gr.setValue('incident_state', 6);
+				gr.setValue('state', 6);
+				gr.setValue('resolved_by', gs.getUserID());
+				gr.update();
+			}
+			if (action == 'reopen') {
+				// Do something else
+				gr.setValue('state', 2);
+				gr.update();
+			}
+		}
+	}
+ 
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2018-03-14 17:57:19&lt;/sys_created_on&gt;&lt;sys_id&gt;2d42f6d20ff0df404cf365ba32050ed0&lt;/sys_id&gt;&lt;sys_mod_count&gt;12&lt;/sys_mod_count&gt;&lt;sys_name&gt;Action&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_2d42f6d20ff0df404cf365ba32050ed0&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2018-03-14 18:30:47&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div class="panel panel-default"&gt;
+ &lt;div class="panel-heading"&gt;Actions&lt;/div&gt;
+ &lt;div class="panel-body"&gt;
+ &lt;button type="button" ng-if="c.data.showResolve" class="btn btn-primary btn-block" ng-click="c.uiAction('resolve')"&gt;Resolve Incident&lt;/button&gt;
+ &lt;button type="button" ng-if="c.data.showReopen" class="btn btn-primary btn-block" ng-click="c.uiAction('reopen')"&gt;Reopen Incident&lt;/button&gt;
+ 
+ &lt;/div&gt;
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;&lt;/record_update&gt;</payload>
+<payload_hash>1252386878</payload_hash>
+<remote_update_set display_value="Blog - Responsive Widget">6c7203d20f74df404cf365ba32050e20</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2018-03-14 19:07:58</sys_created_on>
+<sys_id>607203d20f74df404cf365ba32050e21</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>16225c764cf0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2018-03-14 19:07:58</sys_updated_on>
+<table/>
+<target_name>Action</target_name>
+<type>Widget</type>
+<update_domain>global</update_domain>
+<update_guid>f3e9ba5eae34df405e9af6c8503dbb83</update_guid>
+<update_guid_history>f3e9ba5eae34df405e9af6c8503dbb83:1252386878,2d69721ecb34df409a34af05346870d7:780602256,c2e87e1e1534df40a6ab8285855d7836:-287809095,a397b61e6c34df401c0b5782a1bc59f5:-961285945,4807feda7034df409e0133938e7ffd54:-1648583338,31767ada3a34df40d5afc92d433a12fa:1296807236,da6676da6634df40ebc0d4a89f65dfbf:-1101838525,ae4676da3634df40098c6a17a8f5e7b8:600026057,d4d5be9ae534df40521d4d449f1e8d65:-554147017,58b53e9a3e34df4015e282acb7c5a213:711473939,21853e9ad534df40a4e2afda6a64c90a:-1116055089,5472bed6e534df401876e47ea94f21c6:-961285945,6142f6d2aef0df4004b411f5a46138d3:1172898308</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+</unload>
