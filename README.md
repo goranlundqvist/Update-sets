@@ -7,6 +7,15 @@ As you can see below, I have splitted up each blog/video with some small descrip
 
 To make it easier to download the update sets I made a link within each section
 
+## Responsive Widget for Service Portal
+Video: https://youtu.be/-eJMULIa43A
+
+Update set: [download (Save as)](https://raw.githubusercontent.com/goranlundqvist/Update-sets/master/Responsive%20Widget/Responsive%20widget.xml)
+
+Question came up on the community and it isn't the first one. A member would like to have a "action button" that would appear or disappear on the page without needed to reload the page.
+
+In this example I borrow an example of a action button from Serviceportal.io which has some really nice examples. A link to the specific page for it is at the description of the YouTube video. Then we add some code so depending if the state of the incident is "resolved" or not it will show different buttons with different behaviors. Either it's "Resolve incident" or "Reopen incident". And even if you have the page already open and someone else changes the state from the normal UI, the widget will change. All this is made possible through 1 (almost) line of code with the magic of recordwatch.
+
 ## Best Practice with Client Script and GlideAjax:
 Video: https://www.youtube.com/watch?v=p5F3lpXgkHk
 
