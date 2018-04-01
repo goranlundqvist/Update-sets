@@ -28,6 +28,6 @@ Update set containing a Client script and a Script include. Example is used on i
 ## Nice features to know about in ServiceNow:
 Video: https://youtu.be/4Dp2rlMO-7c
 
-Update Set: [download (Save as)](https://github.com/goranlundqvist/Update-sets/blob/master/nice%20to%20have/Nice%20to%20have.xml)
+Update Set: [download (Save as)](https://raw.githubusercontent.com/goranlundqvist/Update-sets/master/nice%20to%20have/Nice%20to%20have.xml)
 
 In this video I show some nice features for the admins/developer. E.g. How to effectly filter the app navigator, .config/.list etc., syntax editor macros and I also give away two nice scripts. One to find which record a sys_id belongs to and one to find records in the a table that has the same value in a field without specifying the value itself.
